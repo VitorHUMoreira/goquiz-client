@@ -9,6 +9,8 @@ import ProfilePage from "./pages/ProfilePage";
 import GuestErrorPage from "./pages/GuestErrorPage";
 import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ConfirmEmailPage from "./pages/ConfirmEmailPage";
+import ActivateAccountPage from "./pages/ActivateAccountPage";
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+          <Route
+            path="/activate-account/:userId"
+            element={<ActivateAccountPage />}
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route
             path="/profile"
