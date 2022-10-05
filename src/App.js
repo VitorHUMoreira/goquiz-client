@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import ActivateAccountPage from "./pages/ActivateAccountPage";
+import CreateQuizPage from "./pages/CreateQuizPage";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
           <Route
             path="/profile"
             element={<ProtectedRoute Component={ProfilePage} />}
+          />
+          <Route
+            path="/create-quiz"
+            element={<ProtectedRoute Component={CreateQuizPage} />}
           />
           <Route path="/guest-error" element={<GuestErrorPage />} />
           <Route path="*" element={<ErrorPage />} />

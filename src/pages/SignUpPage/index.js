@@ -62,6 +62,8 @@ function SignUpPage() {
               type="text"
               value={userForm.name}
               name="nick"
+              minLength={3}
+              maxLength={24}
               required
               onChange={handleChange}
             />
@@ -91,6 +93,8 @@ function SignUpPage() {
               className="form-control"
               type="password"
               id="password"
+              minLength={5}
+              maxLength={24}
               value={userForm.password}
               name="password"
               required

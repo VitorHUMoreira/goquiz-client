@@ -67,6 +67,8 @@ function LoginPage() {
               type="password"
               id="password"
               value={userForm.password}
+              minLength={5}
+              maxLength={24}
               name="password"
               required
               onChange={handleChange}
