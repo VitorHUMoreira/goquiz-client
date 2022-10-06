@@ -55,7 +55,7 @@ function CreateQuizPage() {
               maxLength={32}
               value={quizForm.name}
               onChange={handleChange}
-              placeholder="Nome da configuração"
+              placeholder="Nome do quiz"
               required
             />
           </div>
@@ -71,7 +71,7 @@ function CreateQuizPage() {
               maxLength={128}
               value={quizForm.description}
               onChange={handleChange}
-              placeholder="Descrição da configuração"
+              placeholder="Descrição do quiz"
               required
             />
           </div>

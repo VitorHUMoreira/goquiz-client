@@ -16,6 +16,7 @@ import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import PlayPage from "./pages/PlayPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import EditQuizPage from "./pages/EditQuizPage";
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
           <Route
             path="/create-quiz"
             element={<ProtectedRoute Component={CreateQuizPage} />}
+          />
+          <Route
+            path="/edit-quiz/:quizId"
+            element={<ProtectedRoute Component={EditQuizPage} />}
           />
           <Route path="/play/:quizId" element={<PlayPage />} />
           <Route path="/about" element={<About />} />

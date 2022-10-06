@@ -61,7 +61,7 @@ function PlayPage() {
   }
 
   function playAgain() {
-    window.location.href = `http://localhost:3000/play/${quizId}`;
+    window.location.href = `https://go-quiz.netlify.app/play/${quizId}`;
   }
 
   return (

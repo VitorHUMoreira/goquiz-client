@@ -2,6 +2,8 @@ import { api } from "../../api/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserQuizCard from "../../components/UserQuizCard";
+import Alert from "react-bootstrap/Alert";
+import empty from "../../assets/empty.svg";
 
 function UserProfilePage() {
   const { userId } = useParams();
@@ -66,9 +68,19 @@ function UserProfilePage() {
               QUIZZES
             </label>
             <div className="mt-3 d-flex flex-column gap-3">
-              {user.quizzes.map((quiz) => {
-                return <UserQuizCard key={quiz._id} quiz={quiz} />;
-              })}
+              {user.quizzes.length === 0 && (
+                <Alert className="mt-2" variant="warning">
+                  <img src={empty} width={250} alt="empty" />
+                  <Alert.Heading>
+                    Esse usuário não possui nenhum quiz.
+                  </Alert.Heading>
+                </Alert>
+              )}
+
+              {user.quizzes.length !== 0 &&
+                user.quizzes.map((quiz) => {
+                  return <UserQuizCard key={quiz._id} quiz={quiz} />;
+                })}
             </div>
           </>
         )}

@@ -66,7 +66,7 @@ function ProfilePage() {
   function handleLogout(e) {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
-    window.location.href = "http://localhost:3000/";
+    window.location.href = "https://go-quiz.netlify.app/";
   }
 
   async function handleDelete(e) {
@@ -77,7 +77,7 @@ function ProfilePage() {
       await api.delete(`/users/delete`);
       toast.success("Usuário deletado com sucesso.");
       localStorage.removeItem("loggedInUser");
-      window.location.href = "http://localhost:3000/";
+      window.location.href = "https://go-quiz.netlify.app/";
     } catch (error) {
       deleteUser.current.disabled = false;
       console.log(error);

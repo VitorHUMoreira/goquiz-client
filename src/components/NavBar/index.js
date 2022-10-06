@@ -11,7 +11,7 @@ function NavBar() {
   function handleLogout(e) {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
-    window.location.href = "http://localhost:3000/";
+    window.location.href = "https://go-quiz.netlify.app/";
   }
   return (
     <>

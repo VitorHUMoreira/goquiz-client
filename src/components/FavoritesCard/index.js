@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 function FavoritesCard({ quiz }) {
+  const { loggedInUser } = useContext(AuthContext);
+
   const quizCreatedAt = new Date(quiz.createdAt);
   const quizDay = quizCreatedAt.getDate();
   const quizMonth = quizCreatedAt.getMonth() + 1;
@@ -34,8 +38,23 @@ function FavoritesCard({ quiz }) {
           {`${quizDay}/${quizMonth}/${quizYear} - ${quizHour}:${quizMinutes}`}
         </p>
         <Link to={`/play/${quiz._id}`} className="btn btn-sm btn-info">
-          JOGAR
+          <i className="fa-solid fa-play"></i> JOGAR
         </Link>
+
+        {loggedInUser && (
+          <>
+            {quiz.author._id !== loggedInUser.user._id &&
+              (loggedInUser.user.favorites.includes(quiz._id) ? (
+                <button className="btn btn-danger">
+                  <i className="fa-solid fa-heart"></i> REMOVER FAVORITO
+                </button>
+              ) : (
+                <button className="btn btn-danger">
+                  <i className="fa-regular fa-heart"></i> FAVORITAR
+                </button>
+              ))}
+          </>
+        )}
       </div>
     </div>
   );

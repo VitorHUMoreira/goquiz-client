@@ -2,7 +2,7 @@ import { api } from "../../api/api";
 import { useState, useRef, useEffect } from "react";
 import toast from "react-hot-toast";
 
-function Questions({ quizId }) {
+function Questions({ quizId, question }) {
   const startRef = useRef();
   const [picture, setPicture] = useState("");
   const [preview, setPreview] = useState();
