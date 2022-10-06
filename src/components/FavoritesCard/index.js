@@ -23,7 +23,11 @@ function FavoritesCard({ quiz }) {
         )}
         <p className="card-text">
           AUTOR:{" "}
-          {<Link to={`/user/${quiz.author._id}`}>{quiz.author.nick}</Link>}
+          {
+            <Link style={{ color: "red" }} to={`/user/${quiz.author._id}`}>
+              {quiz.author.nick}
+            </Link>
+          }
         </p>
         <p className="card-text">
           CRIADO EM:{" "}

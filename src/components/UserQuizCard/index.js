@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 function UserQuizCard({ quiz }) {
+  const { loggedInUser } = useContext(AuthContext);
+
   const quizCreatedAt = new Date(quiz.createdAt);
   const quizDay = quizCreatedAt.getDate();
   const quizMonth = quizCreatedAt.getMonth() + 1;
@@ -26,9 +30,18 @@ function UserQuizCard({ quiz }) {
         <Link to={`/play/${quiz._id}`} className="btn btn-sm btn-info">
           JOGAR
         </Link>
-        <Link to={`/play/${quiz._id}`} className="ms-2 btn btn-sm btn-warning">
-          EDITAR
-        </Link>
+        {loggedInUser && (
+          <>
+            {quiz.author === loggedInUser.user._id && (
+              <Link
+                to={`/edit-quiz/${quiz._id}`}
+                className="ms-2 btn btn-sm btn-warning"
+              >
+                EDITAR
+              </Link>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

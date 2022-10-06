@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import PlayPage from "./pages/PlayPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             path="/profile"
             element={<ProtectedRoute Component={ProfilePage} />}
           />
+          <Route path="/user/:userId" element={<UserProfilePage />} />
           <Route
             path="/create-quiz"
             element={<ProtectedRoute Component={CreateQuizPage} />}
