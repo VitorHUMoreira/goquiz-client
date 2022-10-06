@@ -14,6 +14,7 @@ import CreateQuizPage from "./pages/CreateQuizPage";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import About from "./pages/About";
+import PlayPage from "./pages/PlayPage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             path="/create-quiz"
             element={<ProtectedRoute Component={CreateQuizPage} />}
           />
+          <Route path="/play/:quizId" element={<PlayPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/guest-error" element={<GuestErrorPage />} />
           <Route path="*" element={<ErrorPage />} />

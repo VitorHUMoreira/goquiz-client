@@ -18,7 +18,9 @@ function FavoritesCard({ quiz }) {
       <div className="card-body">
         <h5 className="card-title">{quiz.description}</h5>
         <p className="card-text">PERGUNTAS: {quiz.questions.length}</p>
-        <p className="card-text">RATING: {rating}</p>
+        {quiz.ratings.length !== 0 && (
+          <p className="card-text">RATING: {rating.toFixed(2)}</p>
+        )}
         <p className="card-text">
           AUTOR:{" "}
           {<Link to={`/user/${quiz.author._id}`}>{quiz.author.nick}</Link>}

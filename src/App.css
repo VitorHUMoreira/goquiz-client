@@ -202,3 +202,25 @@ a:hover {
 .p-teste {
   margin: 30px 0 5px 0;
 }
+
+.container-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  background-color: whitesmoke;
+  border: 1px solid darkblue;
+  border-radius: 4px;
+  color: darkblue;
+  padding: 16px 24px;
+  width: 90%;
+  position: relative;
+}
+
+.progress {
+  width: 88%;
+  background-color: lightgrey;
+  text-shadow: 1px 1px 2px darkblue;
+}

@@ -139,13 +139,13 @@ function SignUpPage() {
             </Modal.Body>
             <Modal.Footer>
               <button className="btn btn-danger" onClick={handleClose}>
-                <i class="fa-solid fa-xmark"></i> FECHAR
+                <i className="fa-solid fa-xmark"></i> FECHAR
               </button>
               <button
                 className="btn btn-primary"
                 onClick={() => navigate("/login")}
               >
-                <i class="fa-solid fa-right-to-bracket"></i> LOGIN
+                <i className="fa-solid fa-right-to-bracket"></i> LOGIN
               </button>
             </Modal.Footer>
           </Modal>
