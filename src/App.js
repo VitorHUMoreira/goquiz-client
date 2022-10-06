@@ -12,12 +12,15 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import ActivateAccountPage from "./pages/ActivateAccountPage";
 import CreateQuizPage from "./pages/CreateQuizPage";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="App">
       <Toaster />
       <AuthContextComponent>
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
@@ -38,6 +41,7 @@ function App() {
           <Route path="/guest-error" element={<GuestErrorPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </AuthContextComponent>
     </div>
   );

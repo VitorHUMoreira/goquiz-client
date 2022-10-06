@@ -1,14 +1,67 @@
+import { api } from "../../api/api";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/authContext";
+import FavoritesCard from "../../components/FavoritesCard";
 
 function HomePage() {
-  const { loggedInUser } = useContext(AuthContext);
+  const [search, setSearch] = useState("");
+  const [quizzes, setQuizzes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const startRef = useRef();
+
+  useEffect(() => {
+    startRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    async function fetchQuizzes() {
+      try {
+        const response = await api.get("/quizzes/all");
+        setQuizzes(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
+    fetchQuizzes();
+  }, []);
+
+  function handleSearch(e) {
+    setSearch(e.target.value);
+  }
 
   return (
     <>
       HomePage
-      {loggedInUser && <button>TA LOGADO CARAI</button>}
+      <input
+        ref={startRef}
+        className="form-control p-2 mt-4"
+        type="search"
+        value={search}
+        onChange={handleSearch}
+        placeholder="Procure um quiz"
+      />
+      {!loading && (
+        <>
+          <div className="mt-3 d-flex flex-column gap-3">
+            {quizzes
+              .filter((quiz) => {
+                return (
+                  quiz.name.toLowerCase().includes(search.toLowerCase()) ||
+                  quiz.author.nick
+                    .toLowerCase()
+                    .includes(search.toLowerCase()) ||
+                  quiz.description.toLowerCase().includes(search.toLowerCase())
+                );
+              })
+              .map((quiz) => {
+                return <FavoritesCard key={quiz._id} quiz={quiz} />;
+              })}
+          </div>
+        </>
+      )}
       <div className="home">
         <h2>
           Bem Vindo ao GoQuiz, divirta-se criando seu próprio quiz e jogando o

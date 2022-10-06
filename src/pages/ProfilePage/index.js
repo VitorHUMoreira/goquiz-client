@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FavoritesCard from "../../components/FavoritesCard";
 import UserQuizCard from "../../components/UserQuizCard";
 
 function ProfilePage() {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -27,7 +26,7 @@ function ProfilePage() {
   function handleLogout(e) {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
-    navigate("/");
+    window.location.href = "http://localhost:3000/";
   }
 
   const userCreatedAt = new Date(user.createdAt);

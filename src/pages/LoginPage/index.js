@@ -30,7 +30,7 @@ function LoginPage() {
       const response = await api.post("/users/login", userForm);
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
       setLoggedInUser({ ...response.data });
-      navigate("/profile");
+      navigate("/");
       toast.success("Conta logada com sucesso.");
     } catch (error) {
       console.log(error);
