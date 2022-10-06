@@ -2,11 +2,16 @@ import { api } from "../../api/api";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import Modal from "react-bootstrap/Modal";
 
 function SignUpPage() {
   const startRef = useRef();
   const passwordInput = useRef();
+  const passwordEye = useRef();
   const createButton = useRef();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,8 +34,7 @@ function SignUpPage() {
 
     try {
       await api.post("/users/sign-up", userForm);
-      toast.success("Conta criada com sucesso.");
-      navigate("/confirm-email");
+      handleShow();
     } catch (error) {
       createButton.current.disabled = false;
       console.log(error);
@@ -39,11 +43,11 @@ function SignUpPage() {
   }
 
   function showPassword() {
-    if (passwordInput.current.type === "password") {
-      passwordInput.current.type = "text";
-    } else {
-      passwordInput.current.type = "password";
-    }
+    passwordInput.current.type === "password"
+      ? (passwordInput.current.type = "text")
+      : (passwordInput.current.type = "password");
+
+    passwordEye.current.classList.toggle("fa-eye");
   }
 
   return (
@@ -100,13 +104,51 @@ function SignUpPage() {
               required
               onChange={handleChange}
             />
-            <input type="checkbox" onClick={showPassword} />
-            Mostrar Senha
+            <i
+              ref={passwordEye}
+              style={{ marginLeft: "-30px", cursor: "pointer" }}
+              className="fa-solid fa-eye-slash"
+              onClick={showPassword}
+            ></i>
           </div>
 
           <button ref={createButton} type="submit" className="btn btn-primary">
             CRIAR CONTA
           </button>
+
+          <Modal
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            show={show}
+            userForm={userForm}
+            onHide={handleClose}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Parabéns {userForm.nick}!
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h4>Conta criada com sucesso.</h4>
+              <p>
+                Sua conta foi criada, agora é necessário ativa-la. <br /> Foi
+                enviado um e-mail para {userForm.email} com um link para ativar
+                sua conta.
+              </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <button className="btn btn-danger" onClick={handleClose}>
+                <i class="fa-solid fa-xmark"></i> FECHAR
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/login")}
+              >
+                <i class="fa-solid fa-right-to-bracket"></i> LOGIN
+              </button>
+            </Modal.Footer>
+          </Modal>
         </form>
       </div>
     </>
