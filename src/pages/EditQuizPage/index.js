@@ -84,57 +84,62 @@ function EditQuizPage() {
 
   return (
     <>
-      EditQuiz
-      {!loading && (
-        <div className="sign-up mt-4">
-          <form onSubmit={handleSubmitQuiz}>
-            <div className="mb-2">
-              <label className="form-label fw-bold" htmlFor="name">
-                Nome
-              </label>
-              <input
-                className="form-control"
-                id="name"
-                name="name"
-                minLength={3}
-                maxLength={32}
-                value={quiz.name}
-                onChange={handleChangeQuiz}
-                placeholder="Nome do quiz"
-                required
-              />
-            </div>
+      <div className="body shadow-sm">
+        {!loading && (
+          <div className="sign-up mt-4">
+            <form onSubmit={handleSubmitQuiz}>
+              <div className="mb-2">
+                <label className="form-label fw-bold" htmlFor="name">
+                  Nome
+                </label>
+                <input
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  minLength={3}
+                  maxLength={32}
+                  value={quiz.name}
+                  onChange={handleChangeQuiz}
+                  placeholder="Nome do quiz"
+                  required
+                />
+              </div>
 
-            <div className="mb-2">
-              <label className="form-label fw-bold" htmlFor="description">
-                Descrição
-              </label>
-              <input
-                className="form-control"
-                id="description"
-                name="description"
-                maxLength={128}
-                value={quiz.description}
-                onChange={handleChangeQuiz}
-                placeholder="Descrição do quiz"
-                required
-              />
-            </div>
+              <div className="mb-2">
+                <label className="form-label fw-bold" htmlFor="description">
+                  Descrição
+                </label>
+                <input
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  maxLength={128}
+                  value={quiz.description}
+                  onChange={handleChangeQuiz}
+                  placeholder="Descrição do quiz"
+                  required
+                />
+              </div>
 
-            <button ref={editQuiz} type="submit" className="btn btn-success">
-              EDITAR QUIZ
+              <button
+                ref={editQuiz}
+                type="submit"
+                className="button-yellow mt-3"
+              >
+                <i className="fa-solid fa-pen-to-square me-2"></i>EDITAR QUIZ
+              </button>
+            </form>
+            <button onClick={handleDeleteQuiz} className="button-red mt-4">
+              <i className="fa-solid fa-trash me-2"></i>DELETAR QUIZ
             </button>
-          </form>
-          <button onClick={handleDeleteQuiz} className="btn btn-danger">
-            DELETAR QUIZ
-          </button>
-          <div>
-            {quiz.questions.map((question) => {
-              return <Questions quizId={quizId} question={question} />;
-            })}
+            <div>
+              {quiz.questions.map((question) => {
+                return <Questions quizId={quizId} question={question} />;
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }

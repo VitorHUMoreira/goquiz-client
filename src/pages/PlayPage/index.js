@@ -65,18 +65,19 @@ function PlayPage() {
     window.location.href = `https://go-quiz.netlify.app/play/${quizId}`;
   }
 
-  // if (!loading) {
-  //   const i = quiz.ratings.findIndex(
-  //     (index) => index.user === loggedInUser.user._id
-  //   );
-  //   if (i > -1) {
-  //     setUserRating(quiz.ratings[i].rating));
-  //   }
-  // }
+  useEffect(() => {
+    if (!loading && loggedInUser) {
+      const i = quiz.ratings.findIndex(
+        (index) => index.user === loggedInUser.user._id
+      );
+      if (i > -1) {
+        setUserRating(quiz.ratings[i].rating);
+      }
+    }
+  }, [loading]);
 
   return (
     <>
-      Play
       {!loading && +quiz.questions.length > round && (
         <div className="body shadow-sm">
           <h6 className="mb-3">
@@ -104,7 +105,7 @@ function PlayPage() {
                   }
                   key={quiz.questions[round]._id + index}
                   onClick={(e) => handleChoice(e)}
-                  className="btn btn-primary"
+                  className="button"
                 >
                   {alternative}
                 </button>
@@ -116,22 +117,26 @@ function PlayPage() {
       {!loading && +quiz.questions.length === round && loggedInUser && (
         <div className="body shadow-sm">
           <div className="container-game">
-            <h3 className="mt-2">FIM DE JOGO LOGADO</h3>
+            <h3 className="mt-2">FIM DE JOGO</h3>
             <h5>
               Você <span className="span-correct">acertou</span>{" "}
               <strong>{points}</strong> de{" "}
               <strong>{quiz.questions.length}</strong> perguntas.
             </h5>
 
-            <RatingStars quizId={quizId} userRating={userRating} setUserRating={setUserRating} />
+            <RatingStars
+              quizId={quizId}
+              userRating={userRating}
+              setUserRating={setUserRating}
+            />
 
-            <button onClick={playAgain} className="btn btn-info">
-              <i className="fa-solid fa-rotate-right"></i> JOGAR NOVAMENTE
+            <button onClick={playAgain} className="button">
+              <i className="fa-solid fa-rotate-right me-2"></i> JOGAR NOVAMENTE
             </button>
 
             <Link to="/">
-              <button className="btn btn-info">
-                <i className="fa-solid fa-house"></i> HOME
+              <button className="button">
+                <i className="fa-solid fa-house me-2"></i> HOME
               </button>
             </Link>
           </div>
@@ -140,7 +145,7 @@ function PlayPage() {
       {!loading && +quiz.questions.length === round && !loggedInUser && (
         <div className="body shadow-sm">
           <div className="container-game">
-            <h3 className="mt-2">FIM DE JOGO SEM CONTA</h3>
+            <h3 className="mt-2">FIM DE JOGO</h3>
             <h5>
               Você <span className="span-correct">acertou</span>{" "}
               <strong>{points}</strong> de{" "}

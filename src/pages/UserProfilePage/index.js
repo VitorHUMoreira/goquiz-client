@@ -32,58 +32,70 @@ function UserProfilePage() {
 
   return (
     <>
-      UserProfilePage
-      <div className="container-xl main-container bg-secondary border border-dark rounded p-3 mt-4">
-        {!loading && (
-          <>
-            <div className="mt-3 d-flex flex-column gap-3">
-              <div className="mb-2">
-                <label className="form-label" htmlFor="nick">
-                  Nick
-                </label>
-                <input
-                  className="form-control"
-                  id="nick"
-                  type="text"
-                  value={user.nick}
-                  name="nick"
-                  disabled
-                />
+      <div className="body shadow-sm">
+        <div className="container-xl main-container bg-secondary border border-dark rounded p-3 mt-4">
+          {!loading && (
+            <>
+              <div className="mt-3 d-flex flex-column gap-3">
+                <div className="mb-2">
+                  <label className="form-label" htmlFor="nick">
+                    Nick
+                  </label>
+                  <input
+                    className="form-control"
+                    id="nick"
+                    type="text"
+                    value={user.nick}
+                    name="nick"
+                    disabled
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="form-label" htmlFor="createdAt"></label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="createdAt"
+                    value={`${user.quizzes.length} QUIZZES CRIADOS`}
+                    name="createdAt"
+                    disabled
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="form-label" htmlFor="createdAt">
+                    Criado em
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="createdAt"
+                    value={`${userDay}/${userMonth}/${userYear}`}
+                    name="createdAt"
+                    disabled
+                  />
+                </div>
               </div>
-              <div className="mb-4">
-                <label className="form-label" htmlFor="createdAt">
-                  Criado em
-                </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="createdAt"
-                  value={`${userDay}/${userMonth}/${userYear}`}
-                  name="createdAt"
-                  disabled
-                />
-              </div>
-            </div>
-            <label className="form-label" htmlFor="nick">
-              QUIZZES
-            </label>
-            <div className="mt-3 d-flex flex-column gap-3">
-              {user.quizzes.length === 0 && (
-                <Alert className="mt-2" variant="warning">
-                  <img src={empty} width={250} alt="empty" />
-                  <Alert.Heading>
-                    Esse usuário não possui nenhum quiz.
-                  </Alert.Heading>
-                </Alert>
-              )}
+              <label className="form-label" htmlFor="nick">
+                QUIZZES
+              </label>
+              <div className="mt-3 d-flex flex-column gap-3">
+                {user.quizzes.length === 0 && (
+                  <Alert className="mt-2" variant="warning">
+                    <img src={empty} width={250} alt="empty" />
+                    <Alert.Heading>
+                      Esse usuário não possui nenhum quiz.
+                    </Alert.Heading>
+                  </Alert>
+                )}
 
-              {user.quizzes.length !== 0 &&
-                user.quizzes.map((quiz) => {
-                  return <UserQuizCard key={quiz._id} quiz={quiz} />;
-                })}
-            </div>
-          </>
-        )}
+                {user.quizzes.length !== 0 &&
+                  user.quizzes.map((quiz) => {
+                    return <UserQuizCard key={quiz._id} quiz={quiz} />;
+                  })}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

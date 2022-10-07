@@ -21,14 +21,13 @@ function ActivateAccountPage() {
 
   return (
     <>
-      ActivateAccount
-      <div>
+      <div className="body shadow-sm">
         <h2>PARABÉNS SUA CONTA FOI ATIVADA COM SUCESSO!</h2>
         <hr />
         <p>Agora você tem acesso a todos os recursos do GoQuiz, divirta-se!</p>
         <Link to="/login">
-          <button className="btn btn-primary" type="button">
-            <i className="fa-solid fa-right-to-bracket"></i> LOGIN
+          <button className="button" type="button">
+            <i className="fa-solid fa-right-to-bracket me-2"></i> LOGIN
           </button>
         </Link>
       </div>

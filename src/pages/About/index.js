@@ -23,8 +23,8 @@ function About() {
       </ul>
 
       <Link to="/">
-        <button className="btn btn-info">
-          <i className="fa-solid fa-house"></i> HOME
+        <button className="button">
+          <i className="fa-solid fa-house me-2"></i> HOME
         </button>
       </Link>
     </div>

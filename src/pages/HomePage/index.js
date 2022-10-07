@@ -6,6 +6,7 @@ function HomePage() {
   const [search, setSearch] = useState("");
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [reload, setReload] = useState(false);
   const startRef = useRef();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function HomePage() {
       }
     }
     fetchQuizzes();
-  }, []);
+  }, [reload]);
 
   function handleSearch(e) {
     setSearch(e.target.value);
@@ -33,34 +34,44 @@ function HomePage() {
 
   return (
     <>
-      HomePage
-      <input
-        ref={startRef}
-        className="form-control p-2 mt-4"
-        type="search"
-        value={search}
-        onChange={handleSearch}
-        placeholder="Procure um quiz"
-      />
-      {!loading && (
-        <>
-          <div className="mt-3 d-flex flex-column gap-3">
-            {quizzes
-              .filter((quiz) => {
-                return (
-                  quiz.name.toLowerCase().includes(search.toLowerCase()) ||
-                  quiz.author.nick
-                    .toLowerCase()
-                    .includes(search.toLowerCase()) ||
-                  quiz.description.toLowerCase().includes(search.toLowerCase())
-                );
-              })
-              .map((quiz) => {
-                return <FavoritesCard key={quiz._id} quiz={quiz} />;
-              })}
-          </div>
-        </>
-      )}
+      <div className="body shadow-sm">
+        <input
+          ref={startRef}
+          className="form-control p-2 mt-4"
+          type="search"
+          value={search}
+          onChange={handleSearch}
+          placeholder="Procure um quiz"
+        />
+        {!loading && (
+          <>
+            <div className="mt-3 d-flex flex-column gap-3">
+              {quizzes
+                .filter((quiz) => {
+                  return (
+                    quiz.name.toLowerCase().includes(search.toLowerCase()) ||
+                    quiz.author.nick
+                      .toLowerCase()
+                      .includes(search.toLowerCase()) ||
+                    quiz.description
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
+                  );
+                })
+                .map((quiz) => {
+                  return (
+                    <FavoritesCard
+                      key={quiz._id}
+                      quiz={quiz}
+                      reload={reload}
+                      setReload={setReload}
+                    />
+                  );
+                })}
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

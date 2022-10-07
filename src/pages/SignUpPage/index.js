@@ -50,98 +50,101 @@ function SignUpPage() {
 
   return (
     <>
-      SignUpPage
-      <div className="sign-up mt-4">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <label className="form-label fw-bold" htmlFor="nick">
-              Nick
-            </label>
-            <input
-              ref={startRef}
-              className="form-control"
-              id="nick"
-              type="text"
-              value={userForm.name}
-              name="nick"
-              minLength={3}
-              maxLength={24}
-              required
-              onChange={handleChange}
-            />
-          </div>
+      <div className="body shadow-sm">
+        <div className="sign-up mt-4">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <label className="form-label fw-bold" htmlFor="nick">
+                Nick
+              </label>
+              <input
+                ref={startRef}
+                className="form-control"
+                id="nick"
+                type="text"
+                value={userForm.name}
+                name="nick"
+                minLength={3}
+                maxLength={24}
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className="mb-2">
-            <label className="form-label fw-bold" htmlFor="email">
-              E-mail
-            </label>
-            <input
-              className="form-control"
-              type="email"
-              id="email"
-              value={userForm.email}
-              name="email"
-              required
-              onChange={handleChange}
-            />
-          </div>
+            <div className="mb-2">
+              <label className="form-label fw-bold" htmlFor="email">
+                E-mail
+              </label>
+              <input
+                className="form-control"
+                type="email"
+                id="email"
+                value={userForm.email}
+                name="email"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className="mb-4">
-            <label className="form-label fw-bold" htmlFor="password">
-              Senha
-            </label>
-            <input
-              ref={passwordInput}
-              className="form-control"
-              type="password"
-              id="password"
-              minLength={5}
-              maxLength={24}
-              value={userForm.password}
-              name="password"
-              required
-              onChange={handleChange}
-            />
-            <i
-              ref={passwordEye}
-              style={{ marginLeft: "-30px", cursor: "pointer" }}
-              className="fa-solid fa-eye-slash"
-              onClick={showPassword}
-            ></i>
-          </div>
+            <div className="mb-4">
+              <label className="form-label fw-bold" htmlFor="password">
+                Senha
+              </label>
+              <div className="container-password">
+                <input
+                  ref={passwordInput}
+                  className="form-control senha-teste"
+                  type="password"
+                  id="password"
+                  minLength={5}
+                  maxLength={24}
+                  value={userForm.password}
+                  name="password"
+                  required
+                  onChange={handleChange}
+                />
+                <i
+                  ref={passwordEye}
+                  style={{ marginLeft: "-30px", cursor: "pointer" }}
+                  className="fa-solid fa-eye-slash olho-teste"
+                  onClick={showPassword}
+                ></i>
+              </div>
+            </div>
 
-          <button ref={createButton} type="submit" className="btn btn-primary">
-            CRIAR CONTA
-          </button>
+            <button ref={createButton} type="submit" className="button">
+              <i className="fa-solid fa-plus me-2"></i>CRIAR CONTA
+            </button>
 
-          <Modal
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            show={show}
-            userForm={userForm}
-            onHide={handleClose}
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                Parabéns {userForm.nick}!
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h4>Conta criada com sucesso.</h4>
-              <p>
-                Sua conta foi criada, agora é necessário ativa-la. <br /> Foi
-                enviado um e-mail para {userForm.email} com um link para ativar
-                sua conta.
-              </p>
-            </Modal.Body>
-            <Modal.Footer>
-              <button className="btn btn-danger" onClick={handleClose}>
-                <i className="fa-solid fa-xmark"></i> FECHAR
-              </button>
-            </Modal.Footer>
-          </Modal>
-        </form>
+            <Modal
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+              show={show}
+              userForm={userForm}
+              onHide={handleClose}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  Parabéns {userForm.nick}!
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <h4>Conta criada com sucesso.</h4>
+                <p>
+                  Sua conta foi criada, agora é necessário ativa-la. <br /> Foi
+                  enviado um e-mail para {userForm.email} com um link para
+                  ativar sua conta.
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <button className="btn btn-danger" onClick={handleClose}>
+                  <i className="fa-solid fa-xmark"></i> FECHAR
+                </button>
+              </Modal.Footer>
+            </Modal>
+          </form>
+        </div>
       </div>
     </>
   );

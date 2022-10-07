@@ -91,7 +91,6 @@ function Questions({ quizId, question }) {
   return (
     <>
       <div className="sign-up mt-4">
-        <label className="form-label fw-bold">Perguntas</label>
         <div className="mt-2">
           <div className="mb-2">
             <label className="form-label fw-bold" htmlFor="header">
@@ -109,7 +108,7 @@ function Questions({ quizId, question }) {
               placeholder="Texto da pergunta"
               required
             />
-            <label className="form-label fw-bold">Foto na pergunta</label>
+            {/* <label className="form-label fw-bold">Foto na pergunta</label>
             <br />
             <img src={preview} alt="" width={100} className="mb-2" />
             <input
@@ -118,7 +117,7 @@ function Questions({ quizId, question }) {
               type="file"
               name="picture"
               onChange={handleImage}
-            />
+            /> */}
           </div>
 
           <div className="mb-2">
@@ -179,7 +178,7 @@ function Questions({ quizId, question }) {
               <option value={alternative4}>{alternative4}</option>
             </select>
           </div>
-          <button onClick={handleSubmit} className="btn btn-success mb-4">
+          <button onClick={handleSubmit} className="button-green mb-4">
             <i className="fa-solid fa-plus"></i>
           </button>
         </div>

@@ -39,49 +39,54 @@ function CreateQuizPage() {
 
   return (
     <>
-      CreateQuiz
-      <div className="sign-up mt-4">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <label className="form-label fw-bold" htmlFor="name">
-              Nome
-            </label>
-            <input
-              ref={startRef}
-              className="form-control"
-              id="name"
-              name="name"
-              minLength={3}
-              maxLength={32}
-              value={quizForm.name}
-              onChange={handleChange}
-              placeholder="Nome do quiz"
-              required
-            />
-          </div>
+      <div className="body shadow-sm">
+        <div className="sign-up mt-4">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <label className="form-label fw-bold" htmlFor="name">
+                Nome
+              </label>
+              <input
+                ref={startRef}
+                className="form-control"
+                id="name"
+                name="name"
+                minLength={3}
+                maxLength={32}
+                value={quizForm.name}
+                onChange={handleChange}
+                placeholder="Nome do quiz"
+                required
+              />
+            </div>
 
-          <div className="mb-2">
-            <label className="form-label fw-bold" htmlFor="description">
-              Descrição
-            </label>
-            <input
-              className="form-control"
-              id="description"
-              name="description"
-              maxLength={128}
-              value={quizForm.description}
-              onChange={handleChange}
-              placeholder="Descrição do quiz"
-              required
-            />
-          </div>
+            <div className="mb-2">
+              <label className="form-label fw-bold" htmlFor="description">
+                Descrição
+              </label>
+              <input
+                className="form-control"
+                id="description"
+                name="description"
+                maxLength={128}
+                value={quizForm.description}
+                onChange={handleChange}
+                placeholder="Descrição do quiz"
+                required
+              />
+            </div>
 
-          <button ref={createButton} type="submit" className="btn btn-success">
-            CRIAR
-          </button>
-        </form>
-        <div>
-          <Questions quizId={quizId} />
+            <button
+              ref={createButton}
+              type="submit"
+              className="button-green mt-2 mb-5"
+            >
+              <i className="fa-solid fa-plus me-2"></i>CRIAR
+            </button>
+          </form>
+          <div>
+            <Questions quizId={quizId} />
+          </div>
         </div>
       </div>
     </>

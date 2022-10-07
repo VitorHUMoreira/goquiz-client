@@ -26,7 +26,7 @@ a:hover {
 }
 
 .nav {
-  background-color: lightskyblue;
+  background-color: #2dc5fa;
   min-height: 8vh;
 }
 
@@ -35,13 +35,13 @@ a:hover {
 }
 
 .brand {
-  color: var(--dark-blue);
-  text-shadow: 1px 1px 2px grey;
+  color: #212353;
+  text-shadow: 1px 1px 2px #717291;
   margin-right: 32px;
 }
 
 .brand:hover {
-  color: grey;
+  color: #717291;
 }
 
 .brand:active {
@@ -53,20 +53,20 @@ a:hover {
 }
 
 .hamburg {
-  border: 1px solid grey;
+  border: 1px solid #717291;
 }
 
 .hamburg-collapse-items {
-  text-shadow: 1px 1px 2px grey;
+  text-shadow: 1px 1px 2px #717291;
 }
 
 .hamburg-collapse-item {
-  color: blue;
+  color: #212353;
   margin-right: 16px;
 }
 
 .hamburg-collapse-item:hover {
-  color: grey;
+  color: #717291;
 }
 
 .hamburg-collapse-item:active {
@@ -76,13 +76,13 @@ a:hover {
 
 .about-content {
   padding: 12px 32px;
-  background-color: var(--light-grey);
-  border: 1px solid var(--dark-blue);
+  background-color: #717291;
+  border: 1px solid #212353;
   border-radius: 4px;
-  box-shadow: 0px 0px 4px var(--black);
+  box-shadow: 0px 0px 4px black;
   text-align: left;
   color: var(--dark-blue);
-  text-shadow: 0px 0px 1px var(--medium-grey);
+  text-shadow: 0px 0px 1px #818694;
   line-height: 2;
   list-style: disc;
 }
@@ -93,8 +93,8 @@ a:hover {
   justify-content: center;
   align-items: center;
   height: 12vh;
-  background-color: darkgrey;
-  color: black;
+  background-color: #212353;
+  color: white;
   text-align: center;
   font-size: small;
   letter-spacing: 2px;
@@ -110,7 +110,7 @@ a:hover {
 }
 
 .footer-portfolio:hover {
-  color: lightgray;
+  color: #818694;
 }
 
 .footer-icons {
@@ -123,7 +123,7 @@ a:hover {
 
 .icon {
   position: relative;
-  background: lightgray;
+  background: #dcdcdc;
   border-radius: 50%;
   padding: 14px 14px 12.5px 15.5px;
   margin: 6px 12px 0 12px;
@@ -143,8 +143,8 @@ a:hover {
   position: absolute;
   top: 0;
   font-size: 10px;
-  background: lightgray;
-  color: lightgray;
+  background: #dcdcdc;
+  color: #dcdcdc;
   padding: 4px 8px;
   border-radius: 4px;
   box-shadow: 0 0 4px black;
@@ -158,7 +158,7 @@ a:hover {
   content: "";
   height: 8px;
   width: 8px;
-  background: lightgray;
+  background: #dcdcdc;
   bottom: -4px;
   left: 50%;
   transform: translate(-50%) rotate(45deg);
@@ -207,9 +207,9 @@ a:hover {
   gap: 12px;
   text-align: center;
   background-color: whitesmoke;
-  border: 1px solid darkblue;
+  border: 1px solid #212353;
   border-radius: 4px;
-  color: darkblue;
+  color: #212353;
   padding: 16px 24px;
   width: 90%;
   position: relative;
@@ -217,20 +217,177 @@ a:hover {
 
 .progress {
   width: 88%;
-  background-color: lightgrey;
-  text-shadow: 1px 1px 2px darkblue;
+  background-color: #dcdcdc;
+  text-shadow: 1px 1px 2px #212353;
 }
 
 .span-correct {
-  color: var(--correct);
+  color: #0bb427;
 }
 
 .correct-answer {
-  background-color: var(--correct);
+  background-color: #0bb427;
   pointer-events: none;
 }
 
 .wrong-answer {
-  background-color: var(--wrong);
+  background-color: #ff0421;
   pointer-events: none;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #a6a7ba;
+  color: #212353;
+}
+
+.container-password {
+  position: relative;
+}
+
+.olho-teste {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+}
+
+.button {
+  background-color: #dcdcdc;
+  border: 1px solid #212353;
+  border-radius: 4px;
+  box-shadow: #717291 4px 4px 0 0, #818694 4px 4px 0 1px;
+  color: #212353;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: #f1f1f1;
+  border-color: black;
+}
+
+.button:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px inset;
+  outline: none;
+}
+
+.button:not([disabled]):active {
+  box-shadow: #717291 2px 2px 0 0, #818694 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+  background-color: white;
+  border-color: black;
+}
+
+.button-yellow {
+  background-color: #d89906;
+  border: 1px solid #212353;
+  border-radius: 4px;
+  box-shadow: #717291 4px 4px 0 0, #818694 4px 4px 0 1px;
+  color: #212353;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-yellow:hover {
+  text-decoration: none;
+  background-color: #f1f1f1;
+  border-color: black;
+}
+
+.button-yellow:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px inset;
+  outline: none;
+}
+
+.button-yellow:not([disabled]):active {
+  box-shadow: #717291 2px 2px 0 0, #818694 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+  background-color: white;
+  border-color: black;
+}
+
+.button-red {
+  background-color: #db1e34;
+  border: 1px solid #212353;
+  border-radius: 4px;
+  box-shadow: #717291 4px 4px 0 0, #818694 4px 4px 0 1px;
+  color: black;
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-red:hover {
+  text-decoration: none;
+  background-color: #f1f1f1;
+  border-color: black;
+}
+
+.button-red:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px inset;
+  outline: none;
+}
+
+.button-red:not([disabled]):active {
+  box-shadow: #717291 2px 2px 0 0, #818694 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+  background-color: white;
+  border-color: black;
+}
+
+.button-green {
+  background-color: #0bb427;
+  border: 1px solid #212353;
+  border-radius: 4px;
+  box-shadow: #717291 4px 4px 0 0, #818694 4px 4px 0 1px;
+  color: black;
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-green:hover {
+  text-decoration: none;
+  background-color: #f1f1f1;
+  border-color: black;
+}
+
+.button-green:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px inset;
+  outline: none;
+}
+
+.button-green:not([disabled]):active {
+  box-shadow: #717291 2px 2px 0 0, #818694 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+  background-color: white;
+  border-color: black;
 }

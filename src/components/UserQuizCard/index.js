@@ -27,17 +27,17 @@ function UserQuizCard({ quiz }) {
           CRIADO EM:{" "}
           {`${quizDay}/${quizMonth}/${quizYear} - ${quizHour}:${quizMinutes}`}
         </p>
-        <Link to={`/play/${quiz._id}`} className="btn btn-sm btn-info">
-          JOGAR
+        <Link to={`/play/${quiz._id}`} className="button">
+          <i class="fa-solid fa-play me-2"></i>JOGAR
         </Link>
         {loggedInUser && (
           <>
             {quiz.author === loggedInUser.user._id && (
               <Link
                 to={`/edit-quiz/${quiz._id}`}
-                className="ms-2 btn btn-sm btn-warning"
+                className="ms-3 button-yellow"
               >
-                EDITAR
+                <i class="fa-solid fa-pen-to-square me-2"></i>EDITAR
               </Link>
             )}
           </>

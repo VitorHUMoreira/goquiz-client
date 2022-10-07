@@ -52,53 +52,56 @@ function LoginPage() {
 
   return (
     <>
-      LoginPage
-      <div className="login mt-4">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <label className="form-label" htmlFor="email">
-              E-mail
-            </label>
-            <input
-              ref={startRef}
-              className="form-control"
-              type="email"
-              id="email"
-              value={userForm.email}
-              name="email"
-              required
-              onChange={handleChange}
-            />
-          </div>
+      <div className="body shadow-sm">
+        <div className="login mt-4">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <label className="form-label" htmlFor="email">
+                E-mail
+              </label>
+              <input
+                ref={startRef}
+                className="form-control"
+                type="email"
+                id="email"
+                value={userForm.email}
+                name="email"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className="mb-4">
-            <label className="form-label" htmlFor="password">
-              Senha
-            </label>
-            <input
-              ref={passwordInput}
-              className="form-control"
-              type="password"
-              id="password"
-              value={userForm.password}
-              minLength={5}
-              maxLength={24}
-              name="password"
-              required
-              onChange={handleChange}
-            />
-            <i
-              ref={passwordEye}
-              style={{ marginLeft: "-30px", cursor: "pointer" }}
-              className="fa-solid fa-eye-slash"
-              onClick={showPassword}
-            ></i>
-          </div>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="password">
+                Senha
+              </label>
+              <div className="container-password">
+                <input
+                  ref={passwordInput}
+                  className="form-control"
+                  type="password"
+                  id="password"
+                  value={userForm.password}
+                  minLength={5}
+                  maxLength={24}
+                  name="password"
+                  required
+                  onChange={handleChange}
+                />
+                <i
+                  ref={passwordEye}
+                  style={{ marginLeft: "-30px", cursor: "pointer" }}
+                  className="fa-solid fa-eye-slash olho-teste"
+                  onClick={showPassword}
+                ></i>
+              </div>
+            </div>
 
-          <button type="submit" className="btn btn-primary">
-            LOGAR
-          </button>
-        </form>
+            <button type="submit" className="button">
+              <i className="fa-solid fa-right-to-bracket me-2"></i>LOGAR
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

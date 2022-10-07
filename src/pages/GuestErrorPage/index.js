@@ -10,14 +10,14 @@ function GuestErrorPage() {
         <p>Para acessar essa página é necessário estar logado.</p>
         <hr />
         <Link to="/">
-          <button className="btn btn-info">
-            <i className="fa-solid fa-right-from-bracket"></i> LOGIN
+          <button className="button">
+            <i className="fa-solid fa-right-from-bracket me-2"></i> LOGIN
           </button>
         </Link>
-        <p>Não tem conta?</p>
+        <p className="mt-4 mb-1">Não tem conta?</p>
         <Link to="/">
-          <button className="btn btn-info">
-            <i className="fa-solid fa-user-plus"></i> CRIAR CONTA
+          <button className="button">
+            <i className="fa-solid fa-user-plus me-2"></i> CRIAR CONTA
           </button>
         </Link>
       </Alert>

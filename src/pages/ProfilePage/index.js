@@ -87,163 +87,183 @@ function ProfilePage() {
 
   return (
     <>
-      ProfilePage
-      <div className="container-xl main-container bg-secondary border border-dark rounded p-3 mt-4">
-        {!loading && (
-          <>
-            <div className="mt-3 d-flex flex-column gap-3">
-              <div className="mb-2">
-                <label className="form-label" htmlFor="nick">
-                  Nick
-                </label>
-                <input
-                  className="form-control"
-                  id="nick"
-                  type="text"
-                  value={user.nick}
-                  name="nick"
-                  disabled
-                />
+      <div className="body shadow-sm">
+        PERFIL
+        <div className="container-xl main-container bg-secondary border border-dark rounded p-3 mt-4">
+          {!loading && (
+            <>
+              <div className="mt-3 d-flex flex-column gap-3">
+                <div className="mb-2">
+                  <label className="form-label" htmlFor="nick">
+                    Nick
+                  </label>
+                  <input
+                    className="form-control"
+                    id="nick"
+                    type="text"
+                    value={user.nick}
+                    name="nick"
+                    disabled
+                  />
 
-                <button
-                  className="btn btn-warning"
-                  onClick={handleShowModalEditNick}
-                >
-                  MUDAR NICK
-                </button>
+                  <button
+                    className="button-yellow mt-2 me-3"
+                    onClick={handleShowModalEditNick}
+                  >
+                    MUDAR NICK
+                  </button>
 
-                <Modal
-                  size="lg"
-                  aria-labelledby="contained-modal-edit-vcenter"
-                  centered
-                  show={show}
-                  userNick={userNick}
-                  setUserNick={setUserNick}
-                  onHide={handleCloseModalEditNick}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-edit-vcenter">
-                      MUDAR NICK
-                    </Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <label className="form-label fw-bold" htmlFor="newNick">
-                      Novo Nick
-                    </label>
-                    <input
-                      autoFocus
-                      className="form-control"
-                      id="newNick"
-                      type="text"
-                      value={userNick.nick}
-                      name="nick"
-                      minLength={3}
-                      maxLength={24}
-                      required
-                      onChange={handleChange}
+                  <Modal
+                    size="lg"
+                    aria-labelledby="contained-modal-edit-vcenter"
+                    centered
+                    show={show}
+                    userNick={userNick}
+                    setUserNick={setUserNick}
+                    onHide={handleCloseModalEditNick}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-edit-vcenter">
+                        MUDAR NICK
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <label className="form-label fw-bold" htmlFor="newNick">
+                        Novo Nick
+                      </label>
+                      <input
+                        autoFocus
+                        className="form-control"
+                        id="newNick"
+                        type="text"
+                        value={userNick.nick}
+                        name="nick"
+                        minLength={3}
+                        maxLength={24}
+                        required
+                        onChange={handleChange}
+                      />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <button
+                        className="btn btn-danger"
+                        onClick={handleCloseModalEditNick}
+                      >
+                        <i className="fa-solid fa-xmark"></i> FECHAR
+                      </button>
+                      <button
+                        ref={saveChanges}
+                        className="btn btn-success"
+                        onClick={handleSubmit}
+                      >
+                        <i className="fa-solid fa-check"></i> SALVAR
+                      </button>
+                    </Modal.Footer>
+                  </Modal>
+
+                  <button
+                    className="button-red"
+                    onClick={handleShowDeleteAccount}
+                  >
+                    DELETER CONTA
+                  </button>
+
+                  <Modal
+                    size="lg"
+                    aria-labelledby="contained-modal-delete-vcenter"
+                    centered
+                    show={showDelete}
+                    onHide={handleCloseDeleteAccount}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-delete-vcenter">
+                        DELETAR CONTA
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <h4>Tem certeza que deseja deletar sua conta?</h4>
+                      <p>
+                        Ao deletar sua conta todos seus quizzes, favoritos e
+                        avaliações serão perdidas.
+                      </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <button
+                        className="btn btn-danger"
+                        onClick={handleCloseDeleteAccount}
+                      >
+                        <i className="fa-solid fa-xmark"></i> CANCELAR
+                      </button>
+                      <button
+                        ref={deleteUser}
+                        className="btn btn-success"
+                        onClick={handleDelete}
+                      >
+                        <i className="fa-solid fa-check"></i> CONFIRMAR
+                      </button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+                <div className="mb-4">
+                  <label className="form-label" htmlFor="createdAt"></label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="createdAt"
+                    value={`${user.quizzes.length} QUIZZES CRIADOS`}
+                    name="createdAt"
+                    disabled
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="form-label" htmlFor="createdAt">
+                    Criado em
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="createdAt"
+                    value={`${userDay}/${userMonth}/${userYear}`}
+                    name="createdAt"
+                    disabled
+                  />
+                </div>
+              </div>
+              <label className="form-label" htmlFor="nick">
+                FAVORITOS
+              </label>
+              <div className="mt-3 d-flex flex-column gap-3">
+                {user.favorites.map((quiz) => {
+                  return (
+                    <FavoritesCard
+                      key={quiz._id}
+                      quiz={quiz}
+                      reload={reload}
+                      setReload={setReload}
                     />
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <button
-                      className="btn btn-danger"
-                      onClick={handleCloseModalEditNick}
-                    >
-                      <i className="fa-solid fa-xmark"></i> FECHAR
-                    </button>
-                    <button
-                      ref={saveChanges}
-                      className="btn btn-success"
-                      onClick={handleSubmit}
-                    >
-                      <i className="fa-solid fa-check"></i> SALVAR
-                    </button>
-                  </Modal.Footer>
-                </Modal>
-
+                  );
+                })}
+              </div>
+              <label className="form-label mt-4 mb-2" htmlFor="nick">
+                SEUS QUIZZES
+              </label>
+              <div className="mt-3 d-flex flex-column gap-3">
+                {user.quizzes.map((quiz) => {
+                  return <UserQuizCard key={quiz._id} quiz={quiz} />;
+                })}
+              </div>
+              <div className="d-flex gap-2 justify-content-center mt-4">
                 <button
-                  className="btn btn-danger"
-                  onClick={handleShowDeleteAccount}
+                  type="button"
+                  onClick={handleLogout}
+                  className="button-red"
                 >
-                  DELETER CONTA
+                  SAIR
                 </button>
-
-                <Modal
-                  size="lg"
-                  aria-labelledby="contained-modal-delete-vcenter"
-                  centered
-                  show={showDelete}
-                  onHide={handleCloseDeleteAccount}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-delete-vcenter">
-                      DELETAR CONTA
-                    </Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <h4>Tem certeza que deseja deletar sua conta?</h4>
-                    <p>
-                      Ao deletar sua conta todos seus quizzes, favoritos e
-                      avaliações serão perdidas.
-                    </p>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <button
-                      className="btn btn-danger"
-                      onClick={handleCloseDeleteAccount}
-                    >
-                      <i className="fa-solid fa-xmark"></i> CANCELAR
-                    </button>
-                    <button
-                      ref={deleteUser}
-                      className="btn btn-success"
-                      onClick={handleDelete}
-                    >
-                      <i className="fa-solid fa-check"></i> CONFIRMAR
-                    </button>
-                  </Modal.Footer>
-                </Modal>
               </div>
-              <div className="mb-4">
-                <label className="form-label" htmlFor="createdAt">
-                  Criado em
-                </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="createdAt"
-                  value={`${userDay}/${userMonth}/${userYear}`}
-                  name="createdAt"
-                  disabled
-                />
-              </div>
-            </div>
-            <label className="form-label" htmlFor="nick">
-              FAVORITOS
-            </label>
-            <div className="mt-3 d-flex flex-column gap-3">
-              {user.favorites.map((quiz) => {
-                return <FavoritesCard key={quiz._id} quiz={quiz} />;
-              })}
-            </div>
-            <label className="form-label" htmlFor="nick">
-              SEUS QUIZZES
-            </label>
-            <div className="mt-3 d-flex flex-column gap-3">
-              {user.quizzes.map((quiz) => {
-                return <UserQuizCard key={quiz._id} quiz={quiz} />;
-              })}
-            </div>
-            <div className="d-flex gap-2 justify-content-center mt-4">
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="btn btn-danger"
-              >
-                SAIR
-              </button>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </>
   );
