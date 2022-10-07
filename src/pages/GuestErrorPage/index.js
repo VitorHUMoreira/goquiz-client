@@ -14,7 +14,7 @@ function GuestErrorPage() {
             <i className="fa-solid fa-right-from-bracket"></i> LOGIN
           </button>
         </Link>
-        <p className="p-teste">Não tem conta?</p>
+        <p>Não tem conta?</p>
         <Link to="/">
           <button className="btn btn-info">
             <i className="fa-solid fa-user-plus"></i> CRIAR CONTA

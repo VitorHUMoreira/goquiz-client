@@ -1,6 +1,5 @@
 import { api } from "../../api/api";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Modal from "react-bootstrap/Modal";
 
@@ -12,7 +11,6 @@ function SignUpPage() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     startRef.current.focus();
@@ -140,12 +138,6 @@ function SignUpPage() {
             <Modal.Footer>
               <button className="btn btn-danger" onClick={handleClose}>
                 <i className="fa-solid fa-xmark"></i> FECHAR
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => navigate("/login")}
-              >
-                <i className="fa-solid fa-right-to-bracket"></i> LOGIN
               </button>
             </Modal.Footer>
           </Modal>

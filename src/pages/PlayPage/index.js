@@ -20,6 +20,7 @@ function PlayPage() {
   const audioWrong = new Audio(wrongMP3);
   audioWrong.volume = 0.2;
   const { loggedInUser } = useContext(AuthContext);
+  const [userRating, setUserRating] = useState(2);
 
   useEffect(() => {
     setLoading(true);
@@ -64,6 +65,15 @@ function PlayPage() {
     window.location.href = `https://go-quiz.netlify.app/play/${quizId}`;
   }
 
+  // if (!loading) {
+  //   const i = quiz.ratings.findIndex(
+  //     (index) => index.user === loggedInUser.user._id
+  //   );
+  //   if (i > -1) {
+  //     setUserRating(quiz.ratings[i].rating));
+  //   }
+  // }
+
   return (
     <>
       Play
@@ -84,7 +94,7 @@ function PlayPage() {
               label={`${round + 1} / ${quiz.questions.length}`}
               className="progress shadow-sm"
             />
-            {currentQuestion.alternatives.map((alternative) => {
+            {currentQuestion.alternatives.map((alternative, index) => {
               return (
                 <button
                   ref={
@@ -92,7 +102,7 @@ function PlayPage() {
                       ? correctRef
                       : null
                   }
-                  key={alternative._id}
+                  key={quiz.questions[round]._id + index}
                   onClick={(e) => handleChoice(e)}
                   className="btn btn-primary"
                 >
@@ -113,7 +123,7 @@ function PlayPage() {
               <strong>{quiz.questions.length}</strong> perguntas.
             </h5>
 
-            <RatingStars quizId={quizId} />
+            <RatingStars quizId={quizId} userRating={userRating} setUserRating={setUserRating} />
 
             <button onClick={playAgain} className="btn btn-info">
               <i className="fa-solid fa-rotate-right"></i> JOGAR NOVAMENTE

@@ -6,6 +6,8 @@ import { AuthContext } from "../../contexts/authContext";
 
 function LoginPage() {
   const startRef = useRef();
+  const passwordInput = useRef();
+  const passwordEye = useRef();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,12 +33,23 @@ function LoginPage() {
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
       setLoggedInUser({ ...response.data });
       navigate("/");
-      toast.success("Conta logada com sucesso.");
+      toast.success("Login realizado com sucesso.");
     } catch (error) {
       console.log(error);
-      toast.error("Erro ao logar.");
+      toast.error("Verifique os dados inseridos e se conta foi ativada.", {
+        duration: 4000,
+      });
     }
   }
+
+  function showPassword() {
+    passwordInput.current.type === "password"
+      ? (passwordInput.current.type = "text")
+      : (passwordInput.current.type = "password");
+
+    passwordEye.current.classList.toggle("fa-eye");
+  }
+
   return (
     <>
       LoginPage
@@ -63,6 +76,7 @@ function LoginPage() {
               Senha
             </label>
             <input
+              ref={passwordInput}
               className="form-control"
               type="password"
               id="password"
@@ -73,6 +87,12 @@ function LoginPage() {
               required
               onChange={handleChange}
             />
+            <i
+              ref={passwordEye}
+              style={{ marginLeft: "-30px", cursor: "pointer" }}
+              className="fa-solid fa-eye-slash"
+              onClick={showPassword}
+            ></i>
           </div>
 
           <button type="submit" className="btn btn-primary">
