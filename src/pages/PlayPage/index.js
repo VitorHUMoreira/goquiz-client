@@ -43,7 +43,8 @@ function PlayPage() {
     const correctTint = correctRef.current;
     correctTint.disabled = true;
     if (e.target.innerText === quiz.questions[round].answer) {
-      e.target.classList.add("correct-answer");
+      e.target.classList.remove("button");
+      e.target.classList.add("button-green");
       audioCorrect.play();
       setTimeout(() => {
         setPoints(points + 1);
@@ -51,9 +52,11 @@ function PlayPage() {
         setCurrentQuestion(quiz.questions[round + 1]);
       }, 2000);
     } else {
-      e.target.classList.add("wrong-answer");
+      e.target.classList.remove("button");
+      e.target.classList.add("button-red");
       audioWrong.play();
-      correctTint.classList.add("correct-answer");
+      correctTint.classList.remove("button");
+      correctTint.classList.add("button-green");
       setTimeout(() => {
         setRound(round + 1);
         setCurrentQuestion(quiz.questions[round + 1]);
