@@ -67,7 +67,6 @@ function FavoritesCard({ quiz, reload, setReload }) {
   useEffect(() => {
     if (!loading && loggedInUser) {
       const fav = user.favorites.filter((element) => element._id === quiz._id);
-      console.log(fav);
       if (fav.length === 0) {
         setIsFavorited(false);
       } else {
@@ -75,8 +74,6 @@ function FavoritesCard({ quiz, reload, setReload }) {
       }
     }
   }, [loading]);
-
-  console.log(isFavorited);
 
   return (
     <div className="card">
